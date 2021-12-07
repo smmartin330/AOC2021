@@ -1,4 +1,3 @@
-#A list of fish sorted by their timers. 
 fish = []
 days = 80
 input = open("day6_input.txt")
@@ -6,7 +5,6 @@ input = open("day6_input.txt")
 data = input.readline().strip().split(',')
 for d in data:
     fish.append(int(d))
-
 
 for day in range(0,days):
     for f in range(0,len(fish)):
@@ -16,5 +14,4 @@ for day in range(0,days):
         else:
             fish[f] -= 1
     
-
 print(len(fish))
