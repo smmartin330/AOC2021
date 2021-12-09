@@ -77,7 +77,7 @@ def get_basin_size(datamap=datamap,checked=checked,low_point=[0,0,[0,0]]):
         for new in new_adjacents:
             adjacents.append(new)
         new_adjacents = []
-        for adj in reversed(adjacents):                                               # For each point adjacent in the list
+        for adj in reversed(adjacents):                                     # For each point adjacent in the list
             adj_x = adj[0]                                                  # Get the X of the point
             adj_y = adj[1]                                                  # Get the Y of the point
             if datamap[adj_y][adj_x] == 9:                                  # Is it a nine?
@@ -89,17 +89,15 @@ def get_basin_size(datamap=datamap,checked=checked,low_point=[0,0,[0,0]]):
                 value, adj_spaces, adj_values = get_adjacents(adj_x,adj_y)  # get the adjacent spaces
                 checked[adj_y][adj_x] = True                                # mark it as checked
                 basin_size += 1                                             # increase the basin size
-                adjacents.remove([adj_x,adj_y])                                     # remove it from the list
-                for space in (space for space in adj_spaces if space not in new_adjacents):                                    # for this space's adjacents   
-                    if checked[space[1]][space[0]] == True:
+                adjacents.remove([adj_x,adj_y])                             # remove it from the list
+                for space in (space for space in adj_spaces if space not in new_adjacents):   # for this space's adjacents not already staged
+                    if checked[space[1]][space[0]] == True:  #If checked already, skip.
                         pass
-                        #print("Skipping space, already checked.")                                                # move along
-                    elif datamap[space[1]][space[0]] == 9:
+                    elif datamap[space[1]][space[0]] == 9:   #If a 9, mark as checked, skip.
                         checked[space[1]][space[0]] = True
                         pass
-                        #print("Skipping space, it's a 9")                # if it has been checked already or if it is a 9
-                    else:                                                   # if it hasn't
-                        new_adjacents.append(space)                             # add it to the list to check
+                    else:                                                   
+                        new_adjacents.append(space)          # Otherwise, add it to the list to check
             
     return basin_size
 
