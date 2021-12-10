@@ -1,7 +1,7 @@
 previous_line = 0
 current_line = 0
 count = 0
-input = open("day1_input.txt", "r")
+input = open("d01_input.txt", "r")
 data = input.readlines()
 for x in data:
     current_line = int(x)
@@ -17,7 +17,7 @@ next_window = []
 previous_window = 0
 count = 0
 
-input = open("day1_input.txt", "r")
+input = open("d01_input.txt", "r")
 data = input.readlines()
 for x in data:
     current_window = next_window
