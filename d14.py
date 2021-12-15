@@ -34,6 +34,7 @@ def step_pairs(pair_count,yields,steps):
         this_step = {}
         for k,v in pair_count.items():
             if v > 0:
+                # I DONT THINK I NEED TO CREATE THIS STEP AND THEN ADD IT BACK TO PAIR COUNT. I THINK JUST KEEPING THIS_STEP IS SUFFICIENT.
                 try:
                     this_step[yields[k][0]] += v
                 except:
