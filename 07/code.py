@@ -87,14 +87,14 @@ class Puzzle():
         self.input_list = input_text.strip().split(',')
         self.crabs = [ int(crab) for crab in self.input_list ]
     
-    def fuel_cost(self, steps):
-        return steps * (steps + 1) // 2
+    def tri(self, n):
+        return n * (n + 1) // 2
     
     def p1(self):
         self.p1_solution = int(sum([abs(crab - median(self.crabs)) for crab in self.crabs]))
 
     def p2(self):
-        self.p2_solution = min([sum([self.fuel_cost(abs(crab - floor(mean(self.crabs)))) for crab in self.crabs]),sum([self.fuel_cost(abs(crab - round(mean(self.crabs)))) for crab in self.crabs])])
+        self.p2_solution = min([sum([self.tri(abs(crab - floor(mean(self.crabs)))) for crab in self.crabs]),sum([self.tri(abs(crab - round(mean(self.crabs)))) for crab in self.crabs])])
 
 def main():
     parser = argparse.ArgumentParser(description=f'AOC2022 Puzzle Day { DAY }')
