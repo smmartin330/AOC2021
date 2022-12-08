@@ -92,8 +92,7 @@ class Puzzle():
         self.input_list = input_text.strip().split(',')
         self.lanternfish = deque([0,0,0,0,0,0,0,0,0])
         for fish in self.input_list:
-            fish = int(fish)
-            self.lanternfish[fish] += 1
+            self.lanternfish[int(fish)] += 1
     
     def day(self):
         self.lanternfish.rotate(-1)
@@ -103,13 +102,11 @@ class Puzzle():
         for _ in range(0,80):
             self.day()
         self.p1_solution = sum(self.lanternfish)
-        return True
 
     def p2(self):
         for _ in range(80,256):
             self.day()
         self.p2_solution = sum(self.lanternfish)
-        return True
 
 def main():
     parser = argparse.ArgumentParser(description=f'AOC2022 Puzzle Day { DAY }')
