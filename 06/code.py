@@ -1,7 +1,6 @@
 import argparse
 from time import time
-import json
-import math
+from collections import deque
 
 DAY = 6
 
@@ -90,12 +89,26 @@ def elapsed_time(start_time):
 class Puzzle():
     def __init__(self,input_text):
         self.input_text = input_text
-        self.input_list = input_text.strip().split('\n')
-                
+        self.input_list = input_text.strip().split(',')
+        self.lanternfish = deque([0,0,0,0,0,0,0,0,0])
+        for fish in self.input_list:
+            fish = int(fish)
+            self.lanternfish[fish] += 1
+    
+    def day(self):
+        self.lanternfish.rotate(-1)
+        self.lanternfish[6] += self.lanternfish[8]
+
     def p1(self):
+        for _ in range(0,80):
+            self.day()
+        self.p1_solution = sum(self.lanternfish)
         return True
 
     def p2(self):
+        for _ in range(80,256):
+            self.day()
+        self.p2_solution = sum(self.lanternfish)
         return True
 
 def main():

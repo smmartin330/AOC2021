@@ -1,3 +1,45 @@
+#p1
+fish = []
+days = 80
+input = open("day6_input.txt")
+
+data = input.readline().strip().split(',')
+for d in data:
+    fish.append(int(d))
+
+for day in range(0,days):
+    for f in range(0,len(fish)):
+        if fish[f] == 0:
+            fish[f] = 6
+            fish.append(8)
+        else:
+            fish[f] -= 1
+    
+print(len(fish))
+
+# p2 first try that took hours because i tracked every fish individually
+
+# doing it this way takes hours...
+fish = []
+days = 256
+input = open("day6_input.txt")
+
+data = input.readline().strip().split(',')
+for d in data:
+    fish.append(int(d))
+
+for day in range(0,days):
+    for f in range(0,len(fish)):
+        if fish[f] == 0:
+            fish[f] = 6
+            fish.append(8)
+        else:
+            fish[f] -= 1
+    
+print(len(fish))
+
+# p2 second try that did it the right way, kinda, but without the deque
+
 # doing it this way takes a second lol. 
 
 counter = [0,0,0,0,0,0,0,0,0]
@@ -25,3 +67,5 @@ for _ in range(256):
                                         #when it loops through, it adds counter[x] to holder[x-1] instead of just assigning?
 
 print(sum(counter))
+
+
