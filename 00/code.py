@@ -23,14 +23,14 @@ def elapsed_time(start_time):
 class Puzzle():
     def __init__(self,input_text):
         self.input_text = input_text
-        self.input_list = input_text.strip().split('\n')
+        self.input_list = input_text.strip().split('\n')        
                 
     def p1(self):
-        return True
-
+        self.p1_solution = None
+        
     def p2(self):
-        return True
-
+        self.p2_solution = None
+                
 def main():
     parser = argparse.ArgumentParser(description=f'AOC2022 Puzzle Day { DAY }')
     parser.add_argument("-p", "--showpuzzle", help="Display Puzzle Text", action='store_true')
